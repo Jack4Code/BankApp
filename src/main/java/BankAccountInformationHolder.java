@@ -1,6 +1,6 @@
 public class BankAccountInformationHolder {
 
-    private String accountNumber;
+    private String accountNumber, firstName, lastName;
     private double accountBalance;
     private double interestRate;
 
@@ -10,9 +10,11 @@ public class BankAccountInformationHolder {
         this.accountNumber = accountNumber;
     }
 
-    public BankAccountInformationHolder(String accountNumber, double accountBalance) {
+    public BankAccountInformationHolder(String accountNumber, String firstName, String lastName, double accountBalance) {
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.interestRate = 1 + (.0001/12);
     }
 
@@ -38,5 +40,21 @@ public class BankAccountInformationHolder {
 
     public void setInterestRate(double interestRate) {
         this.interestRate = interestRate;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }

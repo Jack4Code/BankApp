@@ -21,9 +21,18 @@ public class SQLConnector {
         }
     }
 
-    public static void insertQuery(String accountNumber, double balance, double interestRate) throws Exception{
+    public static void insertAccounts(String accountNumber, String firstName, String lastName, double balance) throws Exception{
         openSQLConnection();
-        String query = String.format("insert into accounts (accountNumber, balance, interestRate) values ('" + accountNumber + "', " + balance + ", " + interestRate + ")");
+        String query = String.format("insert into accounts (accountNumber, firstName, lastName, balance) values ('" + accountNumber + "', '" + firstName + "', '" + lastName + "', " + balance + ")");
+        Statement stmt = con.createStatement();
+        stmt.execute(query);
+        stmt.close();
+        con.close();
+    }
+
+    public static void insertTransactions(String accountNumber, String description, double amount, String transactionType) throws Exception{
+        openSQLConnection();
+        String query = String.format("insert into transactions (accountNumber, description, amount, transactionType) values ('" + accountNumber + "', '" + description + "', " + amount + ", '" + transactionType + "')");
         Statement stmt = con.createStatement();
         stmt.execute(query);
         stmt.close();
